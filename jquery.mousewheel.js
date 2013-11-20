@@ -25,14 +25,13 @@
         slice  = Array.prototype.slice,
         oldMode, nullLowestDeltaTimeout, lowestDelta;
 
-    if ( $.event.fixHooks ) {
-        for ( var i = toFix.length; i; ) {
-            $.event.fixHooks[ toFix[--i] ] = $.event.mouseHooks;
-        }
+    for ( var i = toFix.length; i; ) {
+        $.event.fixHooks[ toFix[--i] ] = $.event.mouseHooks;
     }
 
     var special = $.event.special.mousewheel = {
         version: '4.0.0-pre',
+
         setup: function() {
             if ( this.addEventListener ) {
                 for ( var i = toBind.length; i; ) {
